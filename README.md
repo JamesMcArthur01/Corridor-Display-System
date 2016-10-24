@@ -1,3 +1,3 @@
-# Prototype Ver1.01
+# QR Code (plugin)
 
-Initial prototype repository to collect and store the necessary html/css and javascript files for use in Corridor Display project.
+jQuery plugin for QR code to be displayed on k-web browser 
