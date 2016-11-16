@@ -1,2 +1,2 @@
-# Corridor-Display-System
-An internet-based website that displays relevant information for each college student when activated with a QR code.
+# Countdown Timer
+A basic countdown timer, designed to output a clock that tracks the days, hours, minutes, and seconds until a given event date. 
