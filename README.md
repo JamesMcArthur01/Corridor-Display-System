@@ -1,2 +1,2 @@
-# Corridor-Display-System
-An internet-based website that displays relevant information for each college student when activated with a QR code.
+# CDS Countdown
+A weekly countdown that increments the current week depending on Datetime parameters with aspects of its display drawn from the the API urls.
