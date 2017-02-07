@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+  <title>Lincoln College Countdown</title>
+  <meta name="description" content="Countdown to end of term">
+  <meta name="author" content="Group Aldrin">
+  <link href="CDS CountdownCSS.css" type="text/css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+ <script>
+  $( document ).ready(function() {
+          $.getJSON("http://api.computing-moodle.co.uk/api.php/display/start/", function(result) {
+			var data = result;
+			 document.getElementById("currentWeek").innerHTML=data.start[0].startweek++;
+			 document.getElementById("weeksRemaining").innerHTML = data.start[0].endweek - 1;
+          });
+   });
+</script>
+<div id="wrapper">
+<div id="countdownBlock">
+<h1>Week<br><span id="currentWeek"></span><br><span id="weeksRemaining"></span> Weeks To Go</h1>
+</div>
+<div class="outer">
+    <div class="inner">
+        <ul><li></li><li></li><li></li><li></li></ul>
+        <p><span>3/4</span></p>
+    </div>
+    <p></p>
+</div>
+</div>
+</body>
+</html>
