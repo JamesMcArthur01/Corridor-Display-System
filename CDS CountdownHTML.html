@@ -10,11 +10,55 @@
 </head>
 <body>
  <script>
-  $( document ).ready(function() {
+   $( document ).ready(function() {
           $.getJSON("http://api.computing-moodle.co.uk/api.php/display/start/", function(result) {
 			var data = result;
-			 document.getElementById("currentWeek").innerHTML=data.start[0].startweek++;
-			 document.getElementById("weeksRemaining").innerHTML = data.start[0].endweek - 1;
+			var startArr = [];
+			createData(data);
+						
+			//var weekNum = Number(data.start[0].startweek); //current instance of week
+			var eWeek = Number(data.start[0].endweek);   //end week
+			
+			var sDate = Date.parse(data.start[0].firstweek); //starting date for College
+			var currentDate = new Date(sDate);
+			
+			//weekNum = compareDate(currentDate, weekNum);
+			
+			elWeek = document.getElementById("currentWeek");
+			elEnWeek = document.getElementById("weeksRemaining");
+			elWeek.textContent = startArr[0]; //display of this information should be conditional  i.e. if, if else etc
+			elEnWeek.textContent = eWeek;  
+			
+			
+			function createData(jsonData){ //populates startArr with startweek values from all index positions of json start url
+				
+				$.each(jsonData.start, function(index, str){
+					startArr.push(str.startweek);
+				})
+				
+				//additional function to add endweek to new array
+			}
+			
+			function compareDate(date, week){
+			var today = new Date();
+            			
+				if (date != today){
+				var nWeek = addWeek(week);	
+				return nWeek;
+				}
+			}
+			
+			
+			function addWeek(week){
+			week++;
+			return week;
+			}
+			
+			function addDay(){
+			
+			}
+			
+									
           });
    });
 </script>
