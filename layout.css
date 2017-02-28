@@ -1,0 +1,47 @@
+@font-face {
+  font-family: 'MyWebFont';
+  src: url('webfont.eot'); /* IE9 Compat Modes */
+  src: url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('webfont.woff2') format('woff2'), /* Super Modern Browsers */
+       url('webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+body {
+  font-family: 'MyWebFont', Fallback, sans-serif;
+}
+
+.clear:after{content:"."; display:block; height:0; clear:both; visibility:hidden; line-height:0;}
+.clear{display:block; width:100%; clear:both;}
+html[xmlns] .clear{display:block;}
+* html .clear{height:1%;}
+
+a{outline:none; text-decoration:none;}
+
+section.wrapper{display:block; margin:0 auto; width:960px; text-align:left;}
+
+.row1{color:rgba(255, 255, 255, 1); background-color:rgba(134, 133, 171, 1);}
+.row2{color:rgba(30, 30, 30, 1); background-color:rgba(255, 255, 255, 1);}
+.row3, .row3 a{color:rgba(255, 255, 255, 1); background-color:#1E1E1E;}
+
+#CollegeLogo{
+	float:right; width:90px; height:90px;
+}
+
+#header, #container, #footer{display:block; width:960px;}
+
+h1, h2, h3, h4, h5, h6{margin:0; padding:0; font-size:24px; font-weight:normal; font-style:normal; line-height:normal;}
+
+#header{text-align:center;} 
+
+#container #col1{display:block; float:left; width:960px; color:rgba(108, 110, 114, 1); background-color:#acadc5;}
+
+#footer{background-color:rgba(134, 133, 171, 1);}
+
+/* colours used:
+ rgba(134, 133, 171, 1)
+ rgba(30, 30, 30, 1)
+ rgba(108, 110, 114, 1)
+ rgba(255, 255, 255, 1)
+ rgba(134, 133, 171, 1)
+ */
