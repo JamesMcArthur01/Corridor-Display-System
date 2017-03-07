@@ -4,22 +4,7 @@
 <link rel="stylesheet" type="text/css" href="countdownstyle.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="countdownjs.js"></script>
-<script>
-  $(document).ready(function () {
-  function e() {
-    var e = new Date;
-    e.setDate(e.getDate() + 60);
-    dd = e.getDate();
-    mm = e.getMonth() + 1;
-    y = e.getFullYear();
-    futureFormattedDate = mm + "/" + dd + "/" + y;
-    return futureFormattedDate
-  }
-  $("#countdown").countdown({
-    date: event,
-    format: "on"
-  });
-});
+<script src="JSCountdown.js">
 </script>
 </head>
 <body>
