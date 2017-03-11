@@ -1,0 +1,36 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+#header {
+  margin: auto;
+  width: 400px;
+  height: 400px;
+}
+
+#lessons {
+  margin: auto;
+  width: 400px;
+  height: 400px;
+}
+
+#mess {
+  margin: auto;
+  width: 400px;
+  height: 400px;
+}
+
+#url-container {
+  margin: auto;
+  width: 400px;
+  height: 400px;
+}
+
+#videos {
+  margin: auto;
+  width: 400px;
+  height: 400px;
+}
