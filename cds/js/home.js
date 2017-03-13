@@ -2,8 +2,11 @@
 var JSONDataURL;
 var JSONDataMESS;
 var JSONDataLESS;
-//var JSONDataVID;
-var messageCounter = 0,
+var JSONDataVID;
+var messageCounterLess = 0;
+var messageCounterMess = 0;
+var messageCounterURLS = 0;
+var messageCounterVID = 0;
 numMessages = 0;
 var count = 0;
 var responseComplete = false;
@@ -34,9 +37,9 @@ $(document).ready(function(){
         case 2 : displayURL(JSONDataURL);
           count++;
           break;
-        // case 3 : displayVid(JSONDataVID);
-        //   count++;
-        //   break;
+        case 3 : displayVid(JSONDataVID);
+          count++;
+          break;
         default: count = 0;
           break;
       }
@@ -100,7 +103,7 @@ function getData(theUrl) {
       dataType: 'json',
       type: 'get',
       cache: false,
-      sucess: function(dataVID) {
+      success: function(dataVID) {
         $(dataVID.videos).each(function(index, value) {
           storeDataVID(dataVID);
         });
@@ -149,51 +152,51 @@ function storeDataVID(dataVID){
 
 // DisplayLessons()
 function displayLessons(JSONDataLESS) {
+  numMessages = JSONDataLESS.lessons.length;
     if(responseComplete){
-      $('#url-container').remove();
-      numMessages = JSONDataLESS.lessons.length;
+      $('#vid-container').remove();
       // create div tag to place in container
       var $lessons = $("<div id='lessons'><div id='groupname'></div><div id='subject'></div><div id='room'></div><div id='start'></div><div id='end'></div></div>");
       // append lessons div to container
       $('#container').append($lessons);
       // if messageCounter > numMessages, populate div information.
-      if (numMessages > messageCounter) {
-        $('#groupname').html(JSONDataLESS.lessons[messageCounter].groupname);
-        $('#subject').html(JSONDataLESS.lessons[messageCounter].subject);
-        $('#room').html(JSONDataLESS.lessons[messageCounter].room);
-        $('#start').html(JSONDataLESS.lessons[messageCounter].starttime);
-        $('#end').html(JSONDataLESS.lessons[messageCounter].endtime);
+      if (numMessages > messageCounterLess) {
+        $('#groupname').html(JSONDataLESS.lessons[messageCounterLess].groupname);
+        $('#subject').html(JSONDataLESS.lessons[messageCounterLess].subject);
+        $('#room').html(JSONDataLESS.lessons[messageCounterLess].room);
+        $('#start').html(JSONDataLESS.lessons[messageCounterLess].starttime);
+        $('#end').html(JSONDataLESS.lessons[messageCounterLess].endtime);
         //inc messageCounter with 1.
-        messageCounter++;
+        messageCounterLess++;
       } else {
         getData('http://api.computing-moodle.co.uk/api.php/display/lessons/');
         numMessages = 0;
-        messageCounter = 0;
+        messageCounterLess = 0;
       }
     }
 }
 
 // DisplayLessons()
 function displayMessages(JSONDataMESS) {
-  var messageCounter = 0,
+  messageCounterMess = 0;
   numMessages = JSONDataMESS.messages.length;
   if(responseComplete){
     $('#lessons').remove();
     var $messages = $("<div id='mess'><div id='heading'></div><div id='message'></div><div id='room'></div><div id='start'></div><div id='end'></div></div>");
     $('#container').append($messages);
-    if(numMessages > messageCounter) {
+    if(numMessages > messageCounterMess) {
       // messages page
-      $('#heading').html(JSONDataMESS.messages[messageCounter].heading);
-      $('#message').html(JSONDataMESS.messages[messageCounter].message);
-      $('#logo').html(JSONDataMESS.messages[messageCounter].logo);
-      $('#heading').css('color', "#" + JSONDataMESS.messages[messageCounter].headingcolour);
-      $('#message').css('color', "#" + JSONDataMESS.messages[messageCounter].textcolour);
-      $('#messages-section').css('background-color', "#" + JSONDataMESS.messages[messageCounter].backgroundcolor);
-      messageCounter++;
+      $('#heading').html(JSONDataMESS.messages[messageCounterMess].heading);
+      $('#message').html(JSONDataMESS.messages[messageCounterMess].message);
+      $('#logo').html(JSONDataMESS.messages[messageCounterMess].logo);
+      $('#heading').css('color', "#" + JSONDataMESS.messages[messageCounterMess].headingcolour);
+      $('#message').css('color', "#" + JSONDataMESS.messages[messageCounterMess].textcolour);
+      $('#messages-section').css('background-color', "#" + JSONDataMESS.messages[messageCounterMess].backgroundcolor);
+      messageCounterMess++;
     } else {
       getData('http://api.computing-moodle.co.uk/api.php/display/messages/');
       numMessages = 0;
-      messageCounter = 0;
+      messageCounterMess = 0;
     }
   }
 }
@@ -205,37 +208,36 @@ function displayURL(JSONDataURL) {
     $('#mess').remove();
     var $urls = $("<div id='url-container'><div id='top'></div><div id='url-info'></div><div id='bottom'></div></div>");
     $('#container').append($urls);
-    if(numMessages >= messageCounter) {
+    if(numMessages > messageCounterURLS) {
      // urls page
-      $('#url-info').html(JSONDataURL.urls[messageCounter].url);
-      $('#top').html(JSONDataURL.urls[messageCounter].toptext);
-      $('#bottom').html(JSONDataURL.urls[messageCounter].bottomtext);
-      $('#url-container').css('background-color', "#" + JSONDataURL.urls[messageCounter].backgroundcolor);
-      messageCounter++;
+      $('#url-info').html(JSONDataURL.urls[messageCounterURLS].url);
+      $('#top').html(JSONDataURL.urls[messageCounterURLS].toptext);
+      $('#bottom').html(JSONDataURL.urls[messageCounterURLS].bottomtext);
+      $('#url-container').css('background-color', "#" + JSONDataURL.urls[messageCounterURLS].backgroundcolor);
+      messageCounterURLS++;
     } else {
       getData('http://api.computing-moodle.co.uk/api.php/display/urls/');
-      numMessages = 0
-      messageCounter = 0;
+      numMessages = 0;
+      messageCounterURLS = 0;
     }
   }
 }
 
 // Display Videos()
 function displayVid(JSONDataVID) {
-  var messageCounter = 0,
   numMessages = JSONDataVID.videos.length;
   if(responseComplete){
-    $('#url').remove();
+    $('#url-container').remove();
     var $vid = $("<div id='vid-container'><div id='vid-url'></div></div>");
     $('#container').append($vid);
-    if(numMessages > messageCounter) {
+    if(numMessages > messageCounterVID) {
      // urls page
-      $('#url').html(JSONDataVID.videos[messageCounter].url);
-      messageCounter++;
+      $('#vid-url').html(JSONDataVID.videos[messageCounterVID].url);
+      messageCounterVID++;
     } else {
-      getData('http://api.computing-moodle.co.uk/api.php/display/urls/');
+      getData('http://api.computing-moodle.co.uk/api.php/display/videos/');
       numMessages = 0
-      messageCounter = 0;
+      messageCounterVID = 0;
     }
   }
 }
