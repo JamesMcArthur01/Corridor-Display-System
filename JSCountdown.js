@@ -1,7 +1,7 @@
 "use strict";
  var JSONDataSTART;
  var JSONDataBREAKS;
- var now = currentDate();
+ var today = currentDate();
  var nextMonday;
  var responseComplete = false;
  var weekDATA = []; //array- [0] = weeknum [1] = remainder [2] = true
@@ -16,9 +16,9 @@
 
     var refreshId = setInterval(function(){
         if(responseComplete){
-            runCountdown(now, JSONDataSTART, JSONDataBREAKS, weekDATA);
+            runCountdown(today, JSONDataSTART, JSONDataBREAKS, weekDATA);
             $("#currentWeek").text(weekDATA[0]);
-            $("#weeksRemaining").text(weekDATA[1]);
+            $("#weeksRemaining").text(weekDATA[1] - weekDATA[0]);
             //remove reaminig weeks in the statement
         }
     },10000);
@@ -63,9 +63,9 @@ function storeDataBREAKS(dataBREAKS){
 }
 
 
-function currentDate() 
+function currentDate()
 {
-    now = new Date();
+    var now = new Date();
     return now;
 }
 
@@ -74,15 +74,16 @@ function runCountdown(todaysdate, startdata, breakdata, weekdata){
 
  if((academicYear[0] <= academicYear[1]) && (academicYear[2]))
  {
-    weekDATA = update(adcademicYear, todaysdate);
-   
+   //add breaks here
+    weekDATA = update(academicYear, todaysdate);
  }
 
  else
  {
-    weekDATA[0] = academicYear[0];
-    weekDATA[1] = academicYear[1];
-    weekDATA[2] = academicYear[2];
+   for (var i = 0; i < academicYear.length; i++)
+   {
+     weekDATA[i] = academicYear[i];
+   }
  }
 
 }
@@ -110,14 +111,12 @@ function checkDate(currentdate, sdata, weekdata){
         academArr[2] = collegeStarts;
     }
 
-    else 
+    else
     {
         if (weekdata[2])
-        { 
-            academArr[0] = weekdata[0]; //weeknumber
-            academArr[1] = weekdata[1]; //remaining
-            academArr[2] = weekdata[2]; 
-            academArr[3] = weekdata[3]; 
+        {
+          for (var i = 0; i < weekdata.length; i++)
+            academArr[i] = weekdata[i]; //weeknumber
         }
 
         else
@@ -125,7 +124,7 @@ function checkDate(currentdate, sdata, weekdata){
             academArr[0] = "Unavailable"; //weeknumber
             academArr[1] = "---";
             academArr[2] = collegeStarts;
-        }     
+        }
     }
 
     return academArr;
@@ -155,7 +154,7 @@ function update(academInfo, currentdate){
 
     }
 
-    return newData;   
+    return newData;
 }
 
 function getNextWeekDay (date, dayOfWeek)
@@ -173,4 +172,3 @@ function addWeek (weekToAdd){
     var newWeek = weekToAdd++;
     return newWeek;
 }
- 
