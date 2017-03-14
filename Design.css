@@ -1,24 +1,30 @@
+*{
+	padding:0;
+	margin:0;
+}
+
 body{
 	background-color: rgba(66, 180, 203, 1);
 	text-align: center;
 	color: white;
 	font-family: Arial;
 }
-
+/*photo{
+	background: url("virus.jpg") no-repeat;
+	background-size: 100%;
+	position: relative;
+	left: 500px;
+	margin-top: 10px;
+	width: 300px;
+	height: 150px; 
+}
+*/
 #main{
 	padding-top: 50px;
 	font-size: 40px;
 }
 
-#photo{
-	width: 300px;
-	height: 150px;
-}
-
 #footer{
-	padding-top: 270px;
+	padding-top: 230px;
 }
 
-#CollegeLogo{
-	float:right; width:90px; height:90px;
-}
