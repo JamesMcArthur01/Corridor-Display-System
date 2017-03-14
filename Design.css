@@ -1,0 +1,24 @@
+body{
+	background-color: rgba(66, 180, 203, 1);
+	text-align: center;
+	color: white;
+	font-family: Arial;
+}
+
+#main{
+	padding-top: 50px;
+	font-size: 40px;
+}
+
+#photo{
+	width: 300px;
+	height: 150px;
+}
+
+#footer{
+	padding-top: 270px;
+}
+
+#CollegeLogo{
+	float:right; width:90px; height:90px;
+}
