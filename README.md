@@ -1,2 +1,2 @@
-# Corridor-Display-System
-An internet-based website that displays relevant information for each college student when activated with a QR code.
+# Fact Page
+Page to display fact page
