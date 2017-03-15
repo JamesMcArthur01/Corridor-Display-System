@@ -1,11 +1,8 @@
 "use strict";
  var JSONDataSTART;
  var JSONDataBREAKS;
- var today = currentDate();
- var nextMonday;
  var responseComplete = false;
- var weekDATA = []; //array- [0] = weeknum [1] = remainder [2] = true
- //var weekData = runCountdown(now, JSONDataSTART, JSONDataBREAKS, weekData);
+ var weekDATA = [];
 
  $(document).ready(function(){
 
@@ -16,7 +13,7 @@
 
     var refreshId = setInterval(function(){
         if(responseComplete){
-            runCountdown(today, JSONDataSTART, JSONDataBREAKS, weekDATA);
+            startCollege(JSONDataSTART, JSONDataBREAKS, weekDATA);
             $("#currentWeek").text(weekDATA[0]);
             $("#weeksRemaining").text(weekDATA[1] - weekDATA[0]);
             //remove reaminig weeks in the statement
@@ -36,7 +33,7 @@ function getData(theUrl) {
     			$(dataBREAKS.breaks).each(function(index, value) {
     				storeDataBREAKS(dataBREAKS);
     			});
-            },
+        },
     })
 
 	$.ajax({
@@ -54,6 +51,7 @@ function getData(theUrl) {
 
 function storeDataSTART(dataSTART){
      JSONDataSTART = dataSTART;
+     //console.log(JSONDataSTART);
      responseComplete = true;
 }
 
@@ -69,13 +67,18 @@ function currentDate()
     return now;
 }
 
-function runCountdown(todaysdate, startdata, breakdata, weekdata){
- var academicYear = checkDate(todaysdate, startdata, weekdata);
-
+function startCollege(startdata, breakdata, weekdata){
+ var today = currentDate();
+ var academicYear = checkDate(today, startdata, weekdata);
  if((academicYear[0] <= academicYear[1]) && (academicYear[2]))
  {
    //add breaks here
-    weekDATA = update(academicYear, todaysdate);
+   var updatedData = update(today, academicYear);
+    for (var i = 0; i < updatedData.length; i++)
+    {
+      weekDATA[i] = updatedData[i];
+    }
+    //if (todaysdate == nextmonday) weekDATA[0] = academicYear[0] + 1
  }
 
  else
@@ -88,35 +91,37 @@ function runCountdown(todaysdate, startdata, breakdata, weekdata){
 
 }
 
-function checkDate(currentdate, sdata, weekdata){
+function checkDate(todaysDate, sData, wData){
 
     var academArr = [];
     var collegeStarts = false;
-    var academYr1 = new Date(sdata.start[0].firstweek);
-    var academYr2 = new Date(sdata.start[1].firstweek);
+    var academYr1 = new Date(sData.start[0].firstweek);
+    var academYr2 = new Date(sData.start[1].firstweek);
 
-    if(currentdate.getDate() == academYr1.getDate())
+    if(todaysDate.getDate() == todaysDate.getDate())
     {
+
         collegeStarts = true;
-        academArr[0] = Number(sdata.start[0].startweek);
-        academArr[1] = Number(sdata.start[0].endweek);
+        academArr[0] = Number(sData.start[0].startweek);
+        academArr[1] = Number(sData.start[0].endweek);
         academArr[2] = collegeStarts;
+        //put nextmonday in here?
     }
 
-    else if(currentdate.getDate() == academYr2.getDate())
+    else if(todaysDate.getDate() == academYr2.getDate())
     {
         collegeStarts = true;
-        academArr[0] = Number(sdata.start[1].startweek);
-        academArr[1] = Number(sdata.start[1].endweek);
+        academArr[0] = Number(sData.start[1].startweek);
+        academArr[1] = Number(sData.start[1].endweek);
         academArr[2] = collegeStarts;
     }
 
     else
     {
-        if (weekdata[2])
+        if (wData[2])
         {
-          for (var i = 0; i < weekdata.length; i++)
-            academArr[i] = weekdata[i]; //weeknumber
+          for (var i = 0; i < wData.length; i++)
+            academArr[i] = wData[i]; //weeknumber
         }
 
         else
@@ -126,27 +131,29 @@ function checkDate(currentdate, sdata, weekdata){
             academArr[2] = collegeStarts;
         }
     }
-
     return academArr;
-
 }
 
-function update(academInfo, currentdate){
+function update(todaysDate, academInfo){
     var updated;
+    var nextMonday = getNextWeekDay(new Date(), 1);
     var newData = [];
-    if ((currentdate.getDate() == nextMonday.getDate()) && (!academInfo[3]))
+    console.log(nextMonday + " is next monday date");
+    //== nextMonday.getDate())
+    if ((todaysDate.getDate() == nextMonday.getDate()) && (!academInfo[3]))
     {
         updated = true;
-        newData[0] = addWeek(academInfo[0]);
+        newData[0] = addWeek(academInfo[0]); //+ 1 instead?
         newData[1] = academInfo[1];
         newData[2] = academInfo[2];
         newData[3] = updated;
+        //bar code here
     }
 
     else
     {
         updated = false;
-        nextMonday = getNextWeekDay(currentdate, 1);
+        nextMonday = getNextWeekDay(new Date(), 1);
         newData[0] = academInfo[0];
         newData[1] = academInfo[1];
         newData[2] = academInfo[2];
@@ -168,7 +175,7 @@ function getNextWeekDay (date, dayOfWeek)
 	return date;
 }
 
-function addWeek (weekToAdd){
+function addWeek(weekToAdd){
     var newWeek = weekToAdd++;
     return newWeek;
 }
