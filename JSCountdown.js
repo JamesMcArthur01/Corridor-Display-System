@@ -17,7 +17,6 @@
             startCollege(JSONDataSTART, JSONDataBREAKS, weekDATA);
             $("#startWeek").text(weekDATA[0]);
             $("#endWeek").text(weekDATA[1] - weekDATA[0]);
-            //remove reaminig weeks in the statement
         }
     },10000);
 });
@@ -52,7 +51,6 @@ function getData(theUrl) {
 
 function storeDataSTART(dataSTART){
      JSONDataSTART = dataSTART;
-     //console.log(JSONDataSTART);
      responseComplete = true;
 }
 
@@ -68,17 +66,38 @@ function currentDate()
     return now;
 }
 
-function startCollege(startdata, breakdata, weekdata){
+function startCollege(startdata, breakdata, weekdata)
+{
  var today = currentDate();
  var academicYear = checkDate(today, startdata, weekdata);
+ var startBreaks = [];
+ var endBreaks = [];
+
+ for (var i = 0; i < breakdata.breaks.length; i++)
+ {
+   startBreaks[i] = new Date(breakdata.breaks[i].startdate);
+   endBreaks[i] = new Date(breakdata.breaks[i].enddate);
+ }
+
  if((academicYear[0] <= academicYear[1]) && (academicYear[2]))
  {
-   //add breaks here
-   var updatedData = update(today, academicYear);
-    for (var i = 0; i < updatedData.length; i++)
-    {
-      weekDATA[i] = updatedData[i];
-    }
+   for (var i = 0; i < breakdata.breaks.length; i++){
+     if((today.getDate >= startBreaks[i]) && (today.getDate < endBreaks[i]))
+     {
+       for(var j = 0; j <weekdata.length; j++)
+       {
+         weekDATA[j] = weekdata[j];
+       }
+     }
+     else
+     {
+       var updatedData = update(today, academicYear);
+        for (var k = 0; k < updatedData.length; k++)
+        {
+          weekDATA[k] = updatedData[k];
+        }
+     }
+   }
  }
 
  else
@@ -88,7 +107,6 @@ function startCollege(startdata, breakdata, weekdata){
      weekDATA[i] = academicYear[i];
    }
  }
-
 }
 
 function checkDate(todaysDate, sData, wData){
@@ -99,7 +117,7 @@ function checkDate(todaysDate, sData, wData){
     var academYr1 = new Date(sData.start[0].firstweek);
     var academYr2 = new Date(sData.start[1].firstweek);
 
-    if(todaysDate.getDate() == academYr1.getDate()) //change back!!!!
+    if(todaysDate.getDate() == todaysDate.getDate())
     {
 
         collegeStarts = true;
@@ -151,13 +169,12 @@ function update(todaysDate, academInfo){
         updated = true;
         var nextMon = getNextMonday(new Date(), 1);
         barWidth += 10;
-        newData[0] = addWeek(academInfo[0]); //+ 1 instead?
+        newData[0] = addWeek(academInfo[0]);
         newData[1] = academInfo[1];
         newData[2] = academInfo[2];
         newData[3] = nextMon;
         newData[4] = updated;
         progress.style.width = barWidth + "px";
-        //bar code here
     }
 
     else
