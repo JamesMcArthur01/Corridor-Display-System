@@ -81,23 +81,32 @@ function startCollege(startdata, breakdata, weekdata)
 
  if((academicYear[0] <= academicYear[1]) && (academicYear[2]))
  {
-   for (var i = 0; i < breakdata.breaks.length; i++){
-     if((today.getDate >= startBreaks[i]) && (today.getDate < endBreaks[i]))
+   var i = 0;
+   var breakTime = false;
+   while (i < breakdata.breaks.length)
+   {
+     if((today.getDate >= startBreaks[i].getDate) && (today.getDate < endBreaks[i].getDate))
      {
+       breakTime = true;
        for(var j = 0; j <weekdata.length; j++)
        {
          weekDATA[j] = weekdata[j];
        }
+       break;
      }
      else
      {
-       var updatedData = update(today, academicYear);
-        for (var k = 0; k < updatedData.length; k++)
-        {
-          weekDATA[k] = updatedData[k];
-        }
+       i++
      }
    }
+  if(!breakTime)
+  {
+    var updatedData = update(today, academicYear);
+    for (var k = 0; k < updatedData.length; k++)
+    {
+      weekDATA[k] = updatedData[k];
+    }
+  }
  }
 
  else
@@ -185,8 +194,6 @@ function update(todaysDate, academInfo){
         newData[2] = academInfo[2];
         newData[3] = academInfo[3];
         newData[4] = updated;
-        progress.style.width = barWidth + "px";
-
     }
 
     return newData;
