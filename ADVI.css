@@ -1,0 +1,68 @@
+*{
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+body{
+background-color: grey;
+}
+#heading{
+  position: relative;
+  width: 48%;
+  height:150px;
+  background-color: grey;
+  left:380px;
+  top:80px;
+
+}
+#message{
+  position: relative;
+  width: 48%;
+  height:150px;
+  background-color: grey;
+  left: 380px;
+  bottom: -110px;
+}
+#url{
+  position: relative;
+  width:16%;
+  height:255px;
+  background-color: grey;
+  top: 90px;
+  left:600px;
+
+}
+#logo{
+  position:relative;
+  width:25%;
+  height:200px;
+  border-radius: 5px;
+  transform: rotate(-30deg);
+  bottom:220px;
+  left:40px;
+  background-repeat: no-repeat;
+  background-image: url("leftpic.jpg");
+  background-size: cover;
+}
+#background{
+  position:relative;
+  width:25%;
+  height:200px;
+  border-radius: 5px;
+  transform: rotate(30deg);
+  bottom:420px;
+  left:1110px;
+  background-repeat: no-repeat;
+  background-image: url("rightpic.jpg");
+  background-size: cover;
+}
+#toptext{
+  font-size: 55px;
+  color: red;
+  text-align: center;
+}
+#bottomtext{
+  font-size: 55px;
+  color: red;
+  text-align: center;
+}
