@@ -15,8 +15,8 @@
     var refreshId = setInterval(function(){
         if(responseComplete){
             startCollege(JSONDataSTART, JSONDataBREAKS, weekDATA);
-            $("#currentWeek").text(weekDATA[0]);
-            $("#weeksRemaining").text(weekDATA[1] - weekDATA[0]);
+            $("#startWeek").text(weekDATA[0]);
+            $("#endWeek").text(weekDATA[1] - weekDATA[0]);
             //remove reaminig weeks in the statement
         }
     },10000);
@@ -103,25 +103,25 @@ function checkDate(todaysDate, sData, wData){
     {
 
         collegeStarts = true;
-        nextMonday = getNextWeekDay(new Date(), 1);
+        nextMonday = getNextMonday(new Date(), 1);
         barWidth = 10;
         academArr[0] = Number(sData.start[0].startweek);
         academArr[1] = Number(sData.start[0].endweek);
         academArr[2] = collegeStarts;
         academArr[3] = nextMonday;
-        progressBar.style.width = barWidth + "px";
+        progress.style.width = barWidth + "px";
     }
 
     else if(todaysDate.getDate() == academYr2.getDate())
     {
         collegeStarts = true;
-        nextMonday = getNextWeekDay(new Date(), 1);
+        nextMonday = getNextMonday(new Date(), 1);
         barWidth = 10;
         academArr[0] = Number(sData.start[1].startweek);
         academArr[1] = Number(sData.start[1].endweek);
         academArr[2] = collegeStarts;
         academArr[3] = nextMonday;
-        progressBar.style.width = barWidth + "px";
+        progress.style.width = barWidth + "px";
     }
 
     else
@@ -149,14 +149,14 @@ function update(todaysDate, academInfo){
     if ((todaysDate.getDate() == academInfo[3].getDate()) && (!academInfo[4]))
     {
         updated = true;
-        var nextMon = getNextWeekDay(new Date(), 1);
+        var nextMon = getNextMonday(new Date(), 1);
         barWidth += 10;
         newData[0] = addWeek(academInfo[0]); //+ 1 instead?
         newData[1] = academInfo[1];
         newData[2] = academInfo[2];
         newData[3] = nextMon;
         newData[4] = updated;
-        progressBar.style.width = barWidth + "px";
+        progress.style.width = barWidth + "px";
         //bar code here
     }
 
@@ -168,18 +168,18 @@ function update(todaysDate, academInfo){
         newData[2] = academInfo[2];
         newData[3] = academInfo[3];
         newData[4] = updated;
-        progressBar.style.width = barWidth + "px";
+        progress.style.width = barWidth + "px";
 
     }
 
     return newData;
 }
 
-function getNextWeekDay (date, dayOfWeek)
+function getNextMonday (date, monday)
 {
-	var dayOffset = dayOfWeek > date.getDay()
-	? dayOfWeek - date.getDay()
-	: dayOfWeek - date.getDay() + 7;
+	var dayOffset = monday > date.getDay()
+	? monday - date.getDay()
+	: monday - date.getDay() + 7;
 
 	date.setDate(date.getDate() + dayOffset);
 
