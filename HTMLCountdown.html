@@ -5,22 +5,19 @@
   <title>Lincoln College Countdown</title>
   <meta name="description" content="Countdown to end of term">
   <meta name="author" content="Group Aldrin">
-  <link href="CDS CountdownCSS.css" type="text/css" rel="stylesheet">
+  <link href="CSSCountdown.css" type="text/css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="JSCountdown.js"></script>
 </head>
 <body>
- <script src="JSCountdown.js">
-</script>
-<div id="wrapper">
+<div id="countWrapper">
 <div id="countdownBlock">
 <h1>Week<br><span id="currentWeek"></span><br><span id="weeksRemaining"></span> Weeks To Go</h1>
 </div>
-<div class="outer">
-    <div class="inner">
-        <ul><li></li><li></li><li></li><li></li></ul>
-        <p><span>3/4</span></p>
-    </div>
-    <p></p>
+<div id="progressBlock">
+  <div id="bar">
+    <div id="progressBar"></div>
+  </div>
 </div>
 </div>
 </body>
