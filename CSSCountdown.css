@@ -13,11 +13,11 @@ body {
 	background-color: #000000;
 }
 
-#currentWeek{
+#startWeek{
 
 }
 
-#weeksRemaining{
+#endWeek{
 
 }
 
@@ -36,7 +36,7 @@ html{
     margin-left: 70px;
 }
 
-#bar {
+#progressBar {
 	width:360px;
   background-color: #ffffff;
   border: 1px solid #9a9a9a;
@@ -44,18 +44,18 @@ html{
   margin: -1px 0 0 -1px;
   overflow: hidden;
   width: 100%;
-	border-radius: 500px;
+	border-color: #00FF00;
+	border-width: 3px;
 }
 
-#bar, #progressBlock{
+#progressBar, #progressBlock{
   position: relative;
 }
 
-#progressBar {
+#progress {
   width: 0px;  /*#myBar.style.width = width*/
-  height: 60px;
+  height: 50px;
   background-color: #00FF00;
-	border-radius: 500px;
 }
 
 #progressBlock{
