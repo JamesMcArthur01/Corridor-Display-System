@@ -117,7 +117,7 @@ function checkDate(todaysDate, sData, wData){
     var academYr1 = new Date(sData.start[0].firstweek);
     var academYr2 = new Date(sData.start[1].firstweek);
 
-    if(todaysDate.getDate() == todaysDate.getDate())
+    if(todaysDate.getDate() == academYr1.getDate())
     {
 
         collegeStarts = true;
