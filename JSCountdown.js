@@ -3,6 +3,7 @@
  var JSONDataBREAKS;
  var responseComplete = false;
  var weekDATA = [];
+ var barWidth;
 
  $(document).ready(function(){
 
@@ -103,20 +104,24 @@ function checkDate(todaysDate, sData, wData){
 
         collegeStarts = true;
         nextMonday = getNextWeekDay(new Date(), 1);
+        barWidth = 10;
         academArr[0] = Number(sData.start[0].startweek);
         academArr[1] = Number(sData.start[0].endweek);
         academArr[2] = collegeStarts;
         academArr[3] = nextMonday;
+        progressBar.style.width = barWidth + "px";
     }
 
     else if(todaysDate.getDate() == academYr2.getDate())
     {
         collegeStarts = true;
         nextMonday = getNextWeekDay(new Date(), 1);
+        barWidth = 10;
         academArr[0] = Number(sData.start[1].startweek);
         academArr[1] = Number(sData.start[1].endweek);
         academArr[2] = collegeStarts;
         academArr[3] = nextMonday;
+        progressBar.style.width = barWidth + "px";
     }
 
     else
@@ -129,8 +134,8 @@ function checkDate(todaysDate, sData, wData){
 
         else
         {
-            academArr[0] = "Unavailable";
-            academArr[1] = "---";
+            academArr[0] = 0;
+            academArr[1] = 0;
             academArr[2] = collegeStarts;
         }
     }
@@ -145,11 +150,13 @@ function update(todaysDate, academInfo){
     {
         updated = true;
         var nextMon = getNextWeekDay(new Date(), 1);
+        barWidth += 10;
         newData[0] = addWeek(academInfo[0]); //+ 1 instead?
         newData[1] = academInfo[1];
         newData[2] = academInfo[2];
         newData[3] = nextMon;
         newData[4] = updated;
+        progressBar.style.width = barWidth + "px";
         //bar code here
     }
 
@@ -161,6 +168,7 @@ function update(todaysDate, academInfo){
         newData[2] = academInfo[2];
         newData[3] = academInfo[3];
         newData[4] = updated;
+        progressBar.style.width = barWidth + "px";
 
     }
 
