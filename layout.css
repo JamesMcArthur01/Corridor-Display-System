@@ -1,0 +1,38 @@
+body{margin:0; padding:0; font-size:13px; font-family:Georgia, "Times New Roman", Times, serif;}
+
+.clear:after{content:"."; display:block; height:0; clear:both; visibility:hidden; line-height:0;}
+.clear{display:block; width:100%; clear:both;}
+html[xmlns] .clear{display:block;}
+* html .clear{height:1%;}
+
+a{outline:none; text-decoration:none;}
+
+div.wrapper{display:block; margin:0 auto; width:100%; text-align:left;}
+
+.row1{color:rgba(255, 255, 255, 1); background-color:rgba(134, 133, 171, 1);}
+.row2{color:rgba(30, 30, 30, 1); background-color:rgba(255, 255, 255, 1);}
+.row3{color:rgba(255, 255, 255, 1); background-color:rgba(134, 133, 171, 1);}
+
+#header, #container, #footer{display:block; width:100%;}
+
+h1, h2, h3, h4, h5, h6{margin:0; padding:0; font-size:24px; font-weight:normal; font-style:normal; line-height:normal;}
+
+#header{text-align:center;} 
+
+#container #col1{display:block; float:left; width:100%; color:rgba(255, 255, 255, 1); background-color:rgba(134, 133, 171, 1);}
+
+#container #col2{display:block; float:left; width:100%; color:rgba(30, 30, 30, 1); background-color:rgba(172, 173, 197, 1);}
+
+#container #col3{display:block; float:left; width:100%; color:rgba(255, 255, 255, 1); background-color:rgba(134, 133, 171, 1);}
+
+#footer {color:rgba(30, 30, 30, 1); background-color:rgba(172, 173, 197, 1);}
+
+
+#CollegeLogo{
+	float:right; width:90px; height:90px;
+}
+
+/* colour pal used: #DDDDDD, #FFFFFF, #888888, #666666, #979797, #6C6E72, #1E1E1E, #333333, #C0BAB6, #979797 */
+
+/* updated colour pal for 21/2/17: http://www.color-hex.com/color-palette/32613
+colours used: #8685ab, #acadc5, #c4c5d6 */
