@@ -1,0 +1,37 @@
+<h3 id="demo">Exercise</h3>
+<p id="hour"></p>
+<p id="min"></p>
+<p id="sec"></p>
+<p id="substr1"></p>
+<p id="substr2"></p>
+<p id="hrstot1"></p>
+<p id="hrstot2"></p>
+<script>
+var d = new Date();
+document.getElementById("demo").innerHTML = d.toUTCString();
+var h = d.getHours();
+document.getElementById("hour").innerHTML = h;
+var m = d.getMinutes();
+document.getElementById("min").innerHTML = m;
+var s = d.getSeconds();
+document.getElementById("sec").innerHTML = s;
+
+
+var time ="15:30";
+var timeHrs = time.substring(0, 2);
+document.getElementById("substr1").innerHTML = timeHrs;
+var timeMins = time.substring(3, 5);
+document.getElementById("substr2").innerHTML = timeMins;
+
+
+var hrsFromString = (timeHrs * 60) + parseInt(timeMins);
+document.getElementById("hrstot1").innerHTML = "hours as string " + hrsFromString;
+var hrsFromDateTime = (h * 60) + m;
+document.getElementById("hrstot2").innerHTML = "hours from clock " + hrsFromDateTime;
+
+
+if(hrsFromString < hrsFromDateTime)
+{
+//do something
+}
+</script>

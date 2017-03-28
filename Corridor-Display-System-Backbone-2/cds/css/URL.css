@@ -1,0 +1,44 @@
+.url-container {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+#top {
+  min-width: 100%;
+}
+
+table, #url-info {
+  min-width: 50%;
+  margin: 0 auto;
+}
+
+#bottom {
+  min-width: 100%;
+}
+
+@media screen and (min-width:800px) {
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .column {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+
+  ._10 {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+
+  ._8 {
+    -webkit-flex: 8;
+    -ms-flex: 8;
+    flex: 8;
+  }
+}
