@@ -1,0 +1,32 @@
+.heading-advi, .message-advi {
+  font-family: 'Roboto', 'Lato', sans-serif;
+  font-weight: 400;
+}
+.heading-fact, .message-fact {
+  font-family: 'Roboto', 'Lato', sans-serif;
+  font-weight: 400;
+}
+#bottom, #top {
+  font-family: 'Roboto', 'Lato', sans-serif;
+  font-weight: 400;
+}
+#heading-imag, #message-imag {
+  font-family: 'Roboto', 'Lato', sans-serif;
+  font-weight: 400;
+}
+#heading-cong {
+  font-family: 'Roboto', 'Lato', sans-serif;
+  font-weight: 400;
+}
+#message-cong {
+  font-family: 'Roboto','Lato',sans-serif;
+    font-weight: 300;
+}
+#countdownBlock h1 {
+  font-family: 'Roboto', 'Lato', sans-serif;
+  font-weight: 700;
+}
+#heading-warn {
+  font-family: 'Roboto','Lato',sans-serif;
+  font-weight: 400;
+}

@@ -7,15 +7,20 @@
   width: auto;
   height: auto;
 }
-
 #heading-imag {
   min-width: 100%;
 }
-
 #message-imag {
   width: 100%;
 }
-
+img {
+  width: 60%;
+  margin-top: 40px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
 @media screen and (min-width:800px) {
 
   .row {

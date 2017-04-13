@@ -1,3 +1,36 @@
+#heading-advi {
+  font-size: 120px;
+}
+.body-advi {
+  font-size: 115px;
+}
+.heading-fact {
+  font-size: 100px;
+}
+.message-fact {
+  font-size: 40px;
+}
+#top, #bottom {
+  font-size: 90px;
+}
+#heading-imag {
+  font-size: 100px
+}
+#message-image {
+  font-size: 80px;
+}
+#heading-cong {
+  font-size: 120px;
+}
+#message-cong {
+  font-size: 90px;
+}
+#heading-warn {
+  font-size: 106px;
+}
+#message-warn {
+  font-size: 100px;
+}
 .fs_5em {
   font-size: 5em;
 }
