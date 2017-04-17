@@ -495,8 +495,6 @@ function startCollege(startdata, breakdata, weekdata){
  var sToday = new Date();
 
  console.log(sToday);
-
- var academicYear = checkDate(sToday, startdata, weekdata);
  var startBreaks = [];
  var endBreaks = [];
 
@@ -505,6 +503,8 @@ function startCollege(startdata, breakdata, weekdata){
    startBreaks[i] = new Date(breakdata.breaks[i].startdate);
    endBreaks[i] = new Date(breakdata.breaks[i].enddate);
  }
+	
+ var academicYear = checkDate(sToday, startdata, weekdata, startBreaks, endBreaks);
 
  if((academicYear[0] <= academicYear[1]) && (academicYear[2]))
  {
@@ -545,7 +545,7 @@ function startCollege(startdata, breakdata, weekdata){
  }
 }
 
-function checkDate(sToday, sData, wData){
+function checkDate(sToday, sData, wData, sBreaks ,enBreaks){
 
     var academArr = [];
     var nextMonday;
@@ -608,20 +608,21 @@ function checkDate(sToday, sData, wData){
         else
         {
             var second=1000, minute=second*60, hour=minute*60, day=hour*24, week=day*7;
-            var timeDiff;
-            var breakDays;
-
-            if(sToday < academYr2) {
-              timeDiff = sToday - academYr1;
-            } else {
-              timeDiff = sToday - academYr2;
-            }
-            var thisWeek = Math.floor(timeDiff/week);
-            barWidth = thisWeek * 10;
-            academArr[0] = thisWeek;
-            academArr[1] = Number(sData.start[0].endweek);
-            academArr[2] = collegeStarts;
-            progress.style.width = barWidth + "px";
+           var timeDiff;
+           var breakWeeks = countBreaks(sBreaks, enBreaks);
+           if (todaysDate < academYr2){
+             timeDiff = todaysDate.getTime() - academYr1.getTime();
+           }
+           else{
+             timeDiff = todaysDate.getTime() - academYr2.getTime();
+           }
+           var weekNum = Math.floor(timeDiff/week);
+           var thisWeek = weekNum - breakWeeks;
+           barWidth = thisWeek * 20;
+           academArr[0] = thisWeek;
+           academArr[1] = Number(sData.start[0].endweek);
+           academArr[2] = collegeStarts;
+           progress.style.width = barWidth + "px";
         }
     }
     return academArr;
@@ -680,4 +681,16 @@ function addWeek(weekToAdd){
     weekToAdd++;
     newWeek = weekToAdd;
     return newWeek;
+}
+
+function countBreaks(firstDate, secondDate){
+  var weeks = 1000*60*60*24*7;
+  var allBreaks = 0;
+  for(var i = 0; i < firstDate.length; i++){
+    allBreaks += secondDate[i].getTime() - firstDate[i].getTime();
+  }
+
+  var result = Math.floor(allBreaks/weeks);
+
+  return result;
 }
