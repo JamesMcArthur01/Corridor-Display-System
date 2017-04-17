@@ -1,0 +1,60 @@
+.job {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+#heading-job {
+  min-width: 100%;
+  text-align: center;
+  margin-top: 14px;
+}
+
+#message-job {
+  width: 100%;
+}
+
+.jobLogo {
+  position: absolute;
+  width: 125px;
+  height: 125px;
+  top: 0;
+  left: 90%;
+}
+.jobLogo1 {
+  position: absolute;
+  width: 125px;
+  height: 125px;
+  top: 0;
+  left: 0;
+}
+@media screen and (min-width:800px) {
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .column {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+
+  ._10 {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+
+  ._8 {
+    -webkit-flex: 8;
+    -ms-flex: 8;
+    flex: 8;
+  }
+}
