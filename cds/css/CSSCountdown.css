@@ -42,7 +42,7 @@ html{
 }
 
 #progressBar {
-	width:360px;
+	width:720px;
   background-color: #ffffff;
   border: 1px solid #9a9a9a;
   color: #ffffff;
@@ -68,4 +68,5 @@ background-color: #000000;
 display: block;
 margin: 6px;
 margin: 20px auto;
+width:720px;
 }
