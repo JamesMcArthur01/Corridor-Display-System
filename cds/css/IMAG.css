@@ -1,0 +1,37 @@
+.imag {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+}
+#heading-imag {
+  min-width: 100%;
+}
+#message-imag {
+  width: 100%;
+}
+.imagImg {
+  width: 60%;
+  margin-top: 40px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+@media screen and (min-width:800px) {
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .column {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
