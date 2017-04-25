@@ -1,0 +1,30 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+.column {
+  flex-basis: 100%;
+}
+
+.center_align {
+  text-align: center;
+}
+
+.justified {
+  text-align: justify;
+}
+
+.margin-top {
+  margin-top: 350px;
+}

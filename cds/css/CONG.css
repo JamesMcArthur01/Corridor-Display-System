@@ -1,0 +1,33 @@
+.cong {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+#heading-cong {
+  min-width: 100%;
+}
+
+#message-cong {
+  width: 100%;
+  margin-top: 40px;
+}
+
+@media screen and (min-width:800px) {
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .column {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
